@@ -73,11 +73,19 @@
 
 - (NSString *)adminDirectory {
     NSString *documentsPath = [(NSURL *)[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] path];
-    return [documentsPath stringByAppendingPathComponent:@"PennApps"];
+    NSString *adminDirectory = [documentsPath stringByAppendingPathComponent:@"PennApps"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:adminDirectory]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:adminDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return adminDirectory;
 }
 
 - (NSString *)resourcesDirectory {
-    return [self.adminDirectory stringByAppendingPathComponent:@"Resources"];
+    NSString *resourcesDirectory = [self.adminDirectory stringByAppendingPathComponent:@"Resources"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:resourcesDirectory]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:resourcesDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return resourcesDirectory;
 }
 
 - (void)setData:(NSDictionary *)data {
@@ -110,7 +118,7 @@
     _data = data;
 
     NSString *filePath = [self.adminDirectory stringByAppendingPathComponent:@"Preferences.plist"];
-    NSMutableDictionary *preferences = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
+    NSMutableDictionary *preferences = [NSMutableDictionary dictionaryWithContentsOfFile:filePath] ?: [NSMutableDictionary dictionary];
     [preferences setValue:_data forKey:@"data"];
     [preferences writeToFile:filePath atomically:YES];
 }
