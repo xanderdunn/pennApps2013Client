@@ -11,7 +11,7 @@
 		6A742CA517DB9BC9008B75C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A742CA417DB9BC9008B75C8 /* CoreGraphics.framework */; };
 		6A742CA717DB9BC9008B75C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A742CA617DB9BC9008B75C8 /* UIKit.framework */; };
 		6A742CAD17DB9BC9008B75C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A742CAB17DB9BC9008B75C8 /* InfoPlist.strings */; };
-		6A742CAF17DB9BC9008B75C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A742CAE17DB9BC9008B75C8 /* main.m */; };
+		6A742CAF17DB9BC9008B75C8 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6A742CAE17DB9BC9008B75C8 /* main.mm */; };
 		6A742CB317DB9BC9008B75C8 /* PAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A742CB217DB9BC9008B75C8 /* PAAppDelegate.m */; };
 		6A742CB617DB9BC9008B75C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A742CB417DB9BC9008B75C8 /* Main.storyboard */; };
 		6A742CB917DB9BC9008B75C8 /* PAMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A742CB817DB9BC9008B75C8 /* PAMasterViewController.m */; };
@@ -42,7 +42,7 @@
 		6A742CA617DB9BC9008B75C8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6A742CAA17DB9BC9008B75C8 /* UIKitStuff-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UIKitStuff-Info.plist"; sourceTree = "<group>"; };
 		6A742CAC17DB9BC9008B75C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6A742CAE17DB9BC9008B75C8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6A742CAE17DB9BC9008B75C8 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		6A742CB017DB9BC9008B75C8 /* UIKitStuff-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIKitStuff-Prefix.pch"; sourceTree = "<group>"; };
 		6A742CB117DB9BC9008B75C8 /* PAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAAppDelegate.h; sourceTree = "<group>"; };
 		6A742CB217DB9BC9008B75C8 /* PAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAAppDelegate.m; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 		6A742CCC17DB9BC9008B75C8 /* UIKitStuffTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UIKitStuffTests-Info.plist"; sourceTree = "<group>"; };
 		6A742CCE17DB9BC9008B75C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6A742CD017DB9BC9008B75C8 /* UIKitStuffTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIKitStuffTests.m; sourceTree = "<group>"; };
-		6A742CE917DBA013008B75C8 /* libPAAdminClient.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libPAAdminClient.a; path = "../PAAdminClient/build/Debug-iphoneos/libPAAdminClient.a"; sourceTree = "<group>"; };
+		6A742CE917DBA013008B75C8 /* libPAAdminClient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPAAdminClient.a; path = "../PAAdminClient/build/Debug-iphoneos/libPAAdminClient.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +137,7 @@
 			children = (
 				6A742CAA17DB9BC9008B75C8 /* UIKitStuff-Info.plist */,
 				6A742CAB17DB9BC9008B75C8 /* InfoPlist.strings */,
-				6A742CAE17DB9BC9008B75C8 /* main.m */,
+				6A742CAE17DB9BC9008B75C8 /* main.mm */,
 				6A742CB017DB9BC9008B75C8 /* UIKitStuff-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -259,7 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A742CAF17DB9BC9008B75C8 /* main.m in Sources */,
+				6A742CAF17DB9BC9008B75C8 /* main.mm in Sources */,
 				6A742CB917DB9BC9008B75C8 /* PAMasterViewController.m in Sources */,
 				6A742CBC17DB9BC9008B75C8 /* PADetailViewController.m in Sources */,
 				6A742CB317DB9BC9008B75C8 /* PAAppDelegate.m in Sources */,
@@ -316,8 +316,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -345,6 +343,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-all_load";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -353,8 +352,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -375,6 +372,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-all_load";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -385,6 +383,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UIKitStuff/UIKitStuff-Prefix.pch";
 				INFOPLIST_FILE = "UIKitStuff/UIKitStuff-Info.plist";
@@ -398,6 +398,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UIKitStuff/UIKitStuff-Prefix.pch";
 				INFOPLIST_FILE = "UIKitStuff/UIKitStuff-Info.plist";
