@@ -25,15 +25,6 @@
 
 @end
 
-static void PARefreshViewHeirarchy(UIView *view) {
-    if (view == nil) view = [[UIApplication sharedApplication] keyWindow];
-    [view.subviews enumerateObjectsUsingBlock:^(UIView *subview, NSUInteger idx, BOOL *stop) {
-        [subview removeFromSuperview];
-        [view addSubview:subview];
-        PARefreshViewHeirarchy(subview);
-    }];
-}
-
 @implementation PAAdminClient {
     BOOL _dataChanged;
 }
