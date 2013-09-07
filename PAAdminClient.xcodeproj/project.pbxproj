@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		841074BD17DB71EC00F16F9D /* PAAppearanceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 841074BC17DB71EC00F16F9D /* PAAppearanceParser.m */; };
+		841074C017DB735900F16F9D /* UIFont+Parsing.m in Sources */ = {isa = PBXBuildFile; fileRef = 841074BF17DB735900F16F9D /* UIFont+Parsing.m */; };
+		841074C317DB736700F16F9D /* UIColor+Parsing.m in Sources */ = {isa = PBXBuildFile; fileRef = 841074C217DB736700F16F9D /* UIColor+Parsing.m */; };
 		D07B243017DAC54E0094A709 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07B242F17DAC54E0094A709 /* Foundation.framework */; };
 		D07B243517DAC54E0094A709 /* PAAdminClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D07B243417DAC54E0094A709 /* PAAdminClient.h */; };
 		D07B243717DAC54E0094A709 /* PAAdminClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B243617DAC54E0094A709 /* PAAdminClient.m */; };
@@ -57,6 +60,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		841074BB17DB71EC00F16F9D /* PAAppearanceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAAppearanceParser.h; sourceTree = "<group>"; };
+		841074BC17DB71EC00F16F9D /* PAAppearanceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAAppearanceParser.m; sourceTree = "<group>"; };
+		841074BE17DB735900F16F9D /* UIFont+Parsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Parsing.h"; sourceTree = "<group>"; };
+		841074BF17DB735900F16F9D /* UIFont+Parsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Parsing.m"; sourceTree = "<group>"; };
+		841074C117DB736700F16F9D /* UIColor+Parsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Parsing.h"; sourceTree = "<group>"; };
+		841074C217DB736700F16F9D /* UIColor+Parsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Parsing.m"; sourceTree = "<group>"; };
 		D07B242C17DAC54E0094A709 /* libPAAdminClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPAAdminClient.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D07B242F17DAC54E0094A709 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D07B243317DAC54E0094A709 /* PAAdminClient-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PAAdminClient-Prefix.pch"; sourceTree = "<group>"; };
@@ -130,6 +139,12 @@
 			children = (
 				D07B243417DAC54E0094A709 /* PAAdminClient.h */,
 				D07B243617DAC54E0094A709 /* PAAdminClient.m */,
+				841074BB17DB71EC00F16F9D /* PAAppearanceParser.h */,
+				841074BC17DB71EC00F16F9D /* PAAppearanceParser.m */,
+				841074BE17DB735900F16F9D /* UIFont+Parsing.h */,
+				841074BF17DB735900F16F9D /* UIFont+Parsing.m */,
+				841074C117DB736700F16F9D /* UIColor+Parsing.h */,
+				841074C217DB736700F16F9D /* UIColor+Parsing.m */,
 				D07B243217DAC54E0094A709 /* Supporting Files */,
 			);
 			path = PAAdminClient;
@@ -267,7 +282,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841074C317DB736700F16F9D /* UIColor+Parsing.m in Sources */,
 				D07B243717DAC54E0094A709 /* PAAdminClient.m in Sources */,
+				841074C017DB735900F16F9D /* UIFont+Parsing.m in Sources */,
+				841074BD17DB71EC00F16F9D /* PAAppearanceParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
