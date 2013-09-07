@@ -21,6 +21,7 @@
 		6A742CC717DB9BC9008B75C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A742CA617DB9BC9008B75C8 /* UIKit.framework */; };
 		6A742CD117DB9BC9008B75C8 /* UIKitStuffTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A742CD017DB9BC9008B75C8 /* UIKitStuffTests.m */; };
 		6A742CEA17DBA013008B75C8 /* libPAAdminClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A742CE917DBA013008B75C8 /* libPAAdminClient.a */; };
+		D07629E517DBD8C30069840D /* Puppies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D07629E417DBD8C30069840D /* Puppies.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		6A742CCC17DB9BC9008B75C8 /* UIKitStuffTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UIKitStuffTests-Info.plist"; sourceTree = "<group>"; };
 		6A742CD017DB9BC9008B75C8 /* UIKitStuffTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIKitStuffTests.m; sourceTree = "<group>"; };
 		6A742CE917DBA013008B75C8 /* libPAAdminClient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPAAdminClient.a; path = "../PAAdminClient/build/Debug-iphoneos/libPAAdminClient.a"; sourceTree = "<group>"; };
+		D07629E417DBD8C30069840D /* Puppies.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Puppies.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 		6A742CA917DB9BC9008B75C8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D07629E417DBD8C30069840D /* Puppies.jpg */,
 				6A742CAA17DB9BC9008B75C8 /* UIKitStuff-Info.plist */,
 				6A742CAE17DB9BC9008B75C8 /* main.mm */,
 				6A742CB017DB9BC9008B75C8 /* UIKitStuff-Prefix.pch */,
@@ -203,6 +206,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Andrew Aude";
 				TargetAttributes = {
+					6A742C9E17DB9BC9008B75C8 = {
+						DevelopmentTeam = S6GB42N3N6;
+					};
 					6A742CC217DB9BC9008B75C8 = {
 						TestTargetID = 6A742C9E17DB9BC9008B75C8;
 					};
@@ -233,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A742CBE17DB9BC9008B75C8 /* Images.xcassets in Resources */,
+				D07629E517DBD8C30069840D /* Puppies.jpg in Resources */,
 				6A742CB617DB9BC9008B75C8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,10 +368,19 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UIKitStuff/UIKitStuff-Prefix.pch";
 				INFOPLIST_FILE = "UIKitStuff/UIKitStuff-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -376,10 +392,19 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UIKitStuff/UIKitStuff-Prefix.pch";
 				INFOPLIST_FILE = "UIKitStuff/UIKitStuff-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
