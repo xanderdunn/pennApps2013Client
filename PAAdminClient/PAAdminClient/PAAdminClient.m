@@ -12,6 +12,8 @@
 
 #import "PAAdminClient.h"
 
+#import "PAAppearanceParser.h"
+
 @interface PAAdminClient ()
 @property (strong, nonatomic) NSURL *baseURL;
 @property (strong, nonatomic) NSString *dataEndpoint;
@@ -108,6 +110,12 @@
             }];
         }
 
+        if ([data[@"appearance"] isKindOfClass:[NSArray class]]) {
+            [data[@"appearance"] enumerateObjectsUsingBlock:^(NSDictionary *appearance, NSUInteger idx, BOOL *stop) {
+                [PAAppearanceParser applyAppearanceFromDictionary:appearance];
+            }];
+        }
+
         if ([data[@"code"] isKindOfClass:[NSString class]]) {
             [self.context evaluateCycript:data[@"code"] error:nil];
         }
@@ -146,7 +154,8 @@
 - (void)refreshData {
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[self.baseURL URLByAppendingPathComponent:self.dataEndpoint]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        self.data = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        if (responseObject) self.data = responseObject;
     }];
 }
 

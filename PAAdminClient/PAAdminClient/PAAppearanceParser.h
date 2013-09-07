@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface PAAppearanceParser : NSObject
-+ (BOOL)applyAppearanceWithDictionary:(NSDictionary *)dictionary;
++ (BOOL)applyAppearanceFromDictionary:(NSDictionary *)dictionary;
 @end
