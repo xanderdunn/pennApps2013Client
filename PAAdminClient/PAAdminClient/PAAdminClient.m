@@ -15,7 +15,7 @@
 @interface PAAdminClient ()
 @property (strong, nonatomic) NSURL *baseURL;
 @property (strong, nonatomic) NSString *dataEndpoint;
-@property (strong, nonatomic) NSNumber *lastDataHash;
+@property (strong, nonatomic) NSDictionary *data;
 
 @property (readonly, strong, nonatomic) NSString *adminDirectory;
 @property (readonly, strong, nonatomic) NSString *resourcesDirectory;
@@ -38,7 +38,7 @@ static void PARefreshViewHeirarchy(UIView *view) {
     BOOL _dataChanged;
 }
 
-@dynamic lastDataHash, adminDirectory, resourcesDirectory;
+@dynamic adminDirectory, resourcesDirectory;
 
 + (instancetype)sharedAdminClient {
     static PAAdminClient *sharedAdminClient = nil;
@@ -64,6 +64,9 @@ static void PARefreshViewHeirarchy(UIView *view) {
         self.overrideStrings = YES;
         self.overrideImages = YES;
 
+        NSString *filePath = [self.adminDirectory stringByAppendingPathComponent:@"Preferences.plist"];
+        self.data = [[NSDictionary dictionaryWithContentsOfFile:filePath] objectForKey:@"data"];
+
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidFinishLaunching:) name:UIApplicationDidFinishLaunchingNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
@@ -86,16 +89,37 @@ static void PARefreshViewHeirarchy(UIView *view) {
     return [self.adminDirectory stringByAppendingPathComponent:@"Resources"];
 }
 
-- (void)setLastDataHash:(NSNumber *)lastDataHash {
+- (void)setData:(NSDictionary *)data {
+    if (![_data isEqual:data]) {
+        if ([data[@"strings"] isKindOfClass:[NSDictionary class]]) {
+            self.strings = data[@"strings"];
+        }
+
+        if ([data[@"images"] isKindOfClass:[NSDictionary class]]) {
+            [data[@"images"] enumerateKeysAndObjectsUsingBlock:^(NSString *filename, NSString *url, BOOL *stop) {
+                NSURLRequest *imageRequest = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+                [NSURLConnection sendAsynchronousRequest:imageRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                    NSString *filePath = [self.resourcesDirectory stringByAppendingPathComponent:filename];
+                    if ([(NSHTTPURLResponse *)response statusCode] == 200) {
+                        [data writeToFile:filePath atomically:YES];
+                    } else {
+                        [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
+                    }
+                }];
+            }];
+        }
+
+        if ([data[@"code"] isKindOfClass:[NSString class]]) {
+            [self.context evaluateCycript:data[@"code"] error:nil];
+        }
+    }
+
+    _data = data;
+
     NSString *filePath = [self.adminDirectory stringByAppendingPathComponent:@"Preferences.plist"];
     NSMutableDictionary *preferences = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
-    [preferences setObject:lastDataHash forKey:@"lastDataHash"];
+    [preferences setValue:_data forKey:@"data"];
     [preferences writeToFile:filePath atomically:YES];
-}
-
-- (NSNumber *)lastDataHash {
-    NSString *filePath = [self.adminDirectory stringByAppendingPathComponent:@"Preferences.plist"];
-    return [[NSDictionary dictionaryWithContentsOfFile:filePath] objectForKey:@"lastDataHash"];
 }
 
 #pragma mark - Notifications
@@ -121,34 +145,7 @@ static void PARefreshViewHeirarchy(UIView *view) {
 - (void)refreshData {
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[self.baseURL URLByAppendingPathComponent:self.dataEndpoint]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-
-        if ([responseObject[@"strings"] isKindOfClass:[NSDictionary class]]) {
-            self.strings = responseObject[@"strings"];
-        }
-
-        if ([responseObject[@"images"] isKindOfClass:[NSDictionary class]]) {
-            [responseObject[@"images"] enumerateKeysAndObjectsUsingBlock:^(NSString *filename, NSString *url, BOOL *stop) {
-                NSURLRequest *imageRequest = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
-                [NSURLConnection sendAsynchronousRequest:imageRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                    NSString *filePath = [self.resourcesDirectory stringByAppendingPathComponent:filename];
-                    if ([(NSHTTPURLResponse *)response statusCode] == 200) {
-                        [data writeToFile:filePath atomically:YES];
-                    } else {
-                        [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
-                    }
-                }];
-            }];
-        }
-
-        if ([responseObject[@"code"] isKindOfClass:[NSString class]]) {
-            [self.context evaluateCycript:responseObject[@"code"] error:nil];
-        }
-
-        if (![self.lastDataHash isEqual:@(responseObject.hash)]) {
-            _dataChanged = YES;
-            self.lastDataHash = @(responseObject.hash);
-        }
+        self.data = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     }];
 }
 
