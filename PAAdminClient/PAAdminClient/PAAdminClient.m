@@ -57,10 +57,6 @@
         self.overrideStrings = YES;
         self.overrideImages = YES;
 
-        NSString *filePath = [self.adminDirectory stringByAppendingPathComponent:@"Preferences.plist"];
-        self.data = [[NSDictionary dictionaryWithContentsOfFile:filePath] objectForKey:@"data"];
-
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidFinishLaunching:) name:UIApplicationDidFinishLaunchingNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
     }
@@ -134,6 +130,9 @@
 #pragma mark - Notifications
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
+    NSString *filePath = [self.adminDirectory stringByAppendingPathComponent:@"Preferences.plist"];
+    self.data = [[NSDictionary dictionaryWithContentsOfFile:filePath] objectForKey:@"data"];
+
     [self refreshData];
 }
 
@@ -181,9 +180,12 @@ static NSString * pathForResource(NSBundle *self, SEL _cmd, NSString *name, NSSt
 }
 
 static __attribute__((constructor)) void constructor() {
-    [PAAdminClient sharedAdminClient];
     Method localizedMethod = class_getInstanceMethod([NSBundle class], @selector(localizedStringForKey:value:table:));
     Method pathMethod = class_getInstanceMethod([NSBundle class], @selector(pathForResource:ofType:));
     localizedString_orig = (NSString *(*)(NSBundle *, SEL, NSString *, NSString *, NSString *))method_setImplementation(localizedMethod, (IMP)&localizedString);
     pathForResource_orig = (NSString * (*)(NSBundle *, SEL, NSString *, NSString *))method_setImplementation(pathMethod, (IMP)&pathForResource);
+
+    [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+        [[PAAdminClient sharedAdminClient] applicationDidFinishLaunching:note];
+    }];
 }
