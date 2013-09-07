@@ -10,7 +10,6 @@
 		6A742CA317DB9BC9008B75C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A742CA217DB9BC9008B75C8 /* Foundation.framework */; };
 		6A742CA517DB9BC9008B75C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A742CA417DB9BC9008B75C8 /* CoreGraphics.framework */; };
 		6A742CA717DB9BC9008B75C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A742CA617DB9BC9008B75C8 /* UIKit.framework */; };
-		6A742CAD17DB9BC9008B75C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A742CAB17DB9BC9008B75C8 /* InfoPlist.strings */; };
 		6A742CAF17DB9BC9008B75C8 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6A742CAE17DB9BC9008B75C8 /* main.mm */; };
 		6A742CB317DB9BC9008B75C8 /* PAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A742CB217DB9BC9008B75C8 /* PAAppDelegate.m */; };
 		6A742CB617DB9BC9008B75C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A742CB417DB9BC9008B75C8 /* Main.storyboard */; };
@@ -20,7 +19,6 @@
 		6A742CC517DB9BC9008B75C8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A742CC417DB9BC9008B75C8 /* XCTest.framework */; };
 		6A742CC617DB9BC9008B75C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A742CA217DB9BC9008B75C8 /* Foundation.framework */; };
 		6A742CC717DB9BC9008B75C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A742CA617DB9BC9008B75C8 /* UIKit.framework */; };
-		6A742CCF17DB9BC9008B75C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A742CCD17DB9BC9008B75C8 /* InfoPlist.strings */; };
 		6A742CD117DB9BC9008B75C8 /* UIKitStuffTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A742CD017DB9BC9008B75C8 /* UIKitStuffTests.m */; };
 		6A742CEA17DBA013008B75C8 /* libPAAdminClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A742CE917DBA013008B75C8 /* libPAAdminClient.a */; };
 /* End PBXBuildFile section */
@@ -41,7 +39,6 @@
 		6A742CA417DB9BC9008B75C8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6A742CA617DB9BC9008B75C8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6A742CAA17DB9BC9008B75C8 /* UIKitStuff-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UIKitStuff-Info.plist"; sourceTree = "<group>"; };
-		6A742CAC17DB9BC9008B75C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6A742CAE17DB9BC9008B75C8 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		6A742CB017DB9BC9008B75C8 /* UIKitStuff-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIKitStuff-Prefix.pch"; sourceTree = "<group>"; };
 		6A742CB117DB9BC9008B75C8 /* PAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAAppDelegate.h; sourceTree = "<group>"; };
@@ -55,7 +52,6 @@
 		6A742CC317DB9BC9008B75C8 /* UIKitStuffTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIKitStuffTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A742CC417DB9BC9008B75C8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6A742CCC17DB9BC9008B75C8 /* UIKitStuffTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UIKitStuffTests-Info.plist"; sourceTree = "<group>"; };
-		6A742CCE17DB9BC9008B75C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6A742CD017DB9BC9008B75C8 /* UIKitStuffTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIKitStuffTests.m; sourceTree = "<group>"; };
 		6A742CE917DBA013008B75C8 /* libPAAdminClient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPAAdminClient.a; path = "../PAAdminClient/build/Debug-iphoneos/libPAAdminClient.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,7 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				6A742CAA17DB9BC9008B75C8 /* UIKitStuff-Info.plist */,
-				6A742CAB17DB9BC9008B75C8 /* InfoPlist.strings */,
 				6A742CAE17DB9BC9008B75C8 /* main.mm */,
 				6A742CB017DB9BC9008B75C8 /* UIKitStuff-Prefix.pch */,
 			);
@@ -156,7 +151,6 @@
 			isa = PBXGroup;
 			children = (
 				6A742CCC17DB9BC9008B75C8 /* UIKitStuffTests-Info.plist */,
-				6A742CCD17DB9BC9008B75C8 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -239,7 +233,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A742CBE17DB9BC9008B75C8 /* Images.xcassets in Resources */,
-				6A742CAD17DB9BC9008B75C8 /* InfoPlist.strings in Resources */,
 				6A742CB617DB9BC9008B75C8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,7 +241,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A742CCF17DB9BC9008B75C8 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,28 +277,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6A742CAB17DB9BC9008B75C8 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6A742CAC17DB9BC9008B75C8 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		6A742CB417DB9BC9008B75C8 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				6A742CB517DB9BC9008B75C8 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		6A742CCD17DB9BC9008B75C8 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6A742CCE17DB9BC9008B75C8 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

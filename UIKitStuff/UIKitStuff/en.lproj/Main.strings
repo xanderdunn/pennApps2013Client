@@ -1,0 +1,30 @@
+
+/* Class = "IBUIViewController"; title = "Detail"; ObjectID = "Ah7-4n-0Wa"; */
+"Ah7-4n-0Wa.title" = "Detail";
+
+/* Class = "IBUILabel"; text = "UILabel"; ObjectID = "Km5-Cd-Lyv"; */
+"Km5-Cd-Lyv.text" = "UILabel";
+
+/* Class = "IBUILabel"; text = "Detail view content goes here"; ObjectID = "Lei-5M-9Gs"; */
+"Lei-5M-9Gs.text" = "Detail view content goes here";
+
+/* Class = "IBUILabel"; text = "Welcome to this app"; ObjectID = "cQV-iu-K6m"; */
+"cQV-iu-K6m.text" = "Welcome to this app";
+
+/* Class = "IBUINavigationItem"; title = "Detail"; ObjectID = "cra-N8-TIN"; */
+"cra-N8-TIN.title" = "Detail";
+
+/* Class = "IBUILabel"; text = "UIStepper"; ObjectID = "iMx-S1-SQC"; */
+"iMx-S1-SQC.text" = "UIStepper";
+
+/* Class = "IBUILabel"; text = "UISwitch"; ObjectID = "n2F-y8-ZC7"; */
+"n2F-y8-ZC7.text" = "UISwitch";
+
+/* Class = "IBUITableViewController"; title = "Master"; ObjectID = "pGg-6v-bdr"; */
+"pGg-6v-bdr.title" = "Master";
+
+/* Class = "IBUINavigationItem"; title = "Master"; ObjectID = "tQt-TN-PWz"; */
+"tQt-TN-PWz.title" = "Master";
+
+/* Class = "IBUILabel"; text = "UIProgressView"; ObjectID = "xCg-c9-fPM"; */
+"xCg-c9-fPM.text" = "UIProgressView";
