@@ -67,7 +67,9 @@
             [responseObject[@"images"] enumerateKeysAndObjectsUsingBlock:^(NSString *filename, NSString *url, BOOL *stop) {
                 NSURLRequest *imageRequest = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
                 [NSURLConnection sendAsynchronousRequest:imageRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                    [data writeToFile:[self.imagesDirectory stringByAppendingPathComponent:filename] atomically:YES];
+                    if ([(NSHTTPURLResponse *)response statusCode] == 200) {
+                        [data writeToFile:[self.imagesDirectory stringByAppendingPathComponent:filename] atomically:YES];
+                    }
                 }];
             }];
         }
