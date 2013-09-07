@@ -36,12 +36,17 @@
 // Usage @"tintColor", @"COLOR:0.44,0.55,0.55,1" , @"UIToolbar"
 // or values like "CGRECT:3,4,5,5", "CGSIZE:30.0,50.0"
 // font : "Helvetica_14"
+
+  @{ @"type" : @"CGRect" , @"value" :@"{{3,2},{4,5}}"}
+
+
 + (NSValue *)convertArbitraryStringToValueType:(NSString *)arbitraryString {
     if ([arbitraryString hasPrefix:@"COLOR"]) {
         // parse color - can decompose
 
     } else if ([arbitraryString hasPrefix:@"CGRECT"]) {
         // parse to CGRECT - can decompose
+        CGRectFromString(<#NSString *string#>)
     }
     // family # size
 //    else 
@@ -49,6 +54,7 @@
         return nil;
 }
 
+// Success bool
 +(BOOL)smartSetAppearanceKey:(NSString *)propertyName value:(id)dictOrStringValue object:(NSString *)className {
 
     Class UIKitClass = NSClassFromString(className);
@@ -63,25 +69,21 @@
 //    NSString *capitalizedSetter = [@"set" stringByAppendingString:[propertyName capitalizedString]];
 //    SEL selector = NSSelectorFromString(capitalizedSetter);
 
-    if (![appearance valueForKey:propertyName]) return NO;
+    @try {
+        [appearance valueForKey:propertyName];
+    }
+    @catch (NSException *exception) {
+        // oops
+        return NO;
+    }
 
     // Determine what the value is:
     id currentValue = [appearance valueForKey:propertyName];
     Class classOfValue = [currentValue class];
 
     id result = nil;
-    if ([classOfValue isSubclassOfClass:[UIColor class]]) {
-        // parse color
-    } else if ([classOfValue isSubclassOfClass:[NSString class]]) {
-        // set
-    } else if ([classOfValue isSubclassOfClass:[NSValue class]]) {
-        // work
-    } else if ([classOfValue isSubclassOfClass:[NSDictionary class]]) {
-        // find a recursive substructure of how to set all the properties safely on this.
-        // #hard
-    } else if ([classOfValue isSubclassOfClass:[UIFont class]]) {
-        // font from string
-    }
+
+    // set based on type key
 
     if (!result) return NO;
     [appearance setValue:result forKey:propertyName];
