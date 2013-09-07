@@ -1,0 +1,16 @@
+{
+ "images" : { "login.png" : "http://localhost:8080/login_arbitrary.png",
+            "login@2x.png" : "https://aws.amazon.com/resource@2x.png", 
+            "signup.jpg" : "http://someresource.com/something.jpg" },
+
+ "strings" : { "Welcome" : "Hi" , 
+
+ "appearance": { "UITabBar" : { "tintColor" : "1,2,255,255" },
+                "UIBarButtonItem" : { "backgroundImage" : "UIImage_ClearImage" ,
+                    "TitleTextAttributes" : { "Font" : "systemFontWithName:18", 
+                            "textShadowColor" : "0,0,0,0" , "titleTextOffset" : "(3,4,3,3)", 
+                            "controlState" : "UIControlStateNormal" }
+                                    }
+              },
+ "code" : "//cycript stuff goes here"
+}

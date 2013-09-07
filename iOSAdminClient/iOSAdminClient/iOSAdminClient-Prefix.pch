@@ -1,0 +1,15 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
+
+#import "iOSAdminClient.h"
+
+#define OVERRIDABLE(x) [[iOSAdminClient sharedAdminClient] replaceableStringForKey:x]
+#define OVERRIDABLE_IN_FILE(x) [[iOSAdminClient sharedAdminClient] replaceableStringForKey:x filename:__FILE__]
+#define OVERRIDABLE_AT_LINE(x) [[iOSAdminClient sharedAdminClient] replaceableStringForKey:x filename:__FILE__ lineNumber:__LINE__]
