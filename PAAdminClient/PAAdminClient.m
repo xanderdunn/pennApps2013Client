@@ -15,7 +15,7 @@
 @interface PAAdminClient ()
 @property (strong, nonatomic) NSURL *baseURL;
 @property (strong, nonatomic) NSString *dataEndpoint;
-@property (strong, nonatomic) NSString *imagesDirectory;
+@property (strong, nonatomic) NSString *resourcesDirectory;
 @property (strong, nonatomic) CYContext *context;
 @property (strong, nonatomic) NSDictionary *strings;
 @end
@@ -38,7 +38,7 @@
         self.dataEndpoint = @"/index.html";
 
         NSString *documentsPath = [(NSURL *)[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] path];
-        self.imagesDirectory = [[documentsPath stringByAppendingPathComponent:@"PennApps"] stringByAppendingPathComponent:@"Images"];
+        self.resourcesDirectory = [[documentsPath stringByAppendingPathComponent:@"PennApps"] stringByAppendingPathComponent:@"Resources"];
 
         self.context = [[CYContext alloc] init];
         self.strings = [NSDictionary dictionary];
@@ -81,8 +81,11 @@
             [responseObject[@"images"] enumerateKeysAndObjectsUsingBlock:^(NSString *filename, NSString *url, BOOL *stop) {
                 NSURLRequest *imageRequest = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
                 [NSURLConnection sendAsynchronousRequest:imageRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                    NSString *filePath = [self.resourcesDirectory stringByAppendingPathComponent:filename];
                     if ([(NSHTTPURLResponse *)response statusCode] == 200) {
-                        [data writeToFile:[self.imagesDirectory stringByAppendingPathComponent:filename] atomically:YES];
+                        [data writeToFile:filePath atomically:YES];
+                    } else {
+                        [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
                     }
                 }];
             }];
@@ -98,7 +101,7 @@
 }
 
 - (NSString *)pathForResource:(NSString *)name ofType:(NSString *)extension {
-    return self.overrideImages ? [[self.imagesDirectory stringByAppendingPathComponent:name] stringByAppendingPathExtension:extension] : nil;
+    return self.overrideImages ? [[self.resourcesDirectory stringByAppendingPathComponent:name] stringByAppendingPathExtension:extension] : nil;
 }
 
 @end
