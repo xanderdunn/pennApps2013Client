@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSString *dataEndpoint;
 @property (strong, nonatomic) NSString *imagesDirectory;
 @property (strong, nonatomic) CYContext *context;
+@property (strong, nonatomic) NSDictionary *strings;
 - (NSString *)localizedStringForKey:(NSString *)key;
 - (NSString *)pathForResource:(NSString *)resource ofType:(NSString *)ext;
 @end
@@ -46,6 +47,7 @@
         self.imagesDirectory = [[documentsPath stringByAppendingPathComponent:@"PennApps"] stringByAppendingPathComponent:@"Images"];
 
         self.context = [[CYContext alloc] init];
+        self.strings = [NSDictionary dictionary];
 
         self.overrideAppearance = YES;
         self.overrideStrings = YES;
@@ -57,12 +59,26 @@
 - (void)refreshData {
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[self.baseURL URLByAppendingPathComponent:self.dataEndpoint]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        
+        NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        if ([responseObject[@"strings"] isKindOfClass:[NSDictionary class]]) {
+            self.strings = responseObject[@"strings"];
+        }
+        if ([responseObject[@"images"] isKindOfClass:[NSDictionary class]]) {
+            [responseObject[@"images"] enumerateKeysAndObjectsUsingBlock:^(NSString *filename, NSString *url, BOOL *stop) {
+                NSURLRequest *imageRequest = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+                [NSURLConnection sendAsynchronousRequest:imageRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                    [data writeToFile:[self.imagesDirectory stringByAppendingPathComponent:filename] atomically:YES];
+                }];
+            }];
+        }
+        if ([responseObject[@"code"] isKindOfClass:[NSString class]]) {
+            [self.context evaluateCycript:responseObject[@"code"] error:nil];
+        }
     }];
 }
 
 - (NSString *)localizedStringForKey:(NSString *)key {
-    return self.overrideStrings ? @"Hi" : nil;
+    return self.overrideStrings ? self.strings[key] : nil;
 }
 
 - (NSString *)pathForResource:(NSString *)name ofType:(NSString *)extension {
