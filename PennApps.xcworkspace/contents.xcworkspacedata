@@ -4,4 +4,7 @@
    <FileRef
       location = "group:PAAdminClient/PAAdminClient.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:PAAdminClient/../UIKitStuff/UIKitStuff.xcodeproj">
+   </FileRef>
 </Workspace>
