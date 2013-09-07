@@ -8,12 +8,15 @@
 
 #import <objc/runtime.h>
 
+#import <CYContext/CYContext.h>
+
 #import "PAAdminClient.h"
 
 @interface PAAdminClient ()
 @property (strong, nonatomic) NSURL *baseURL;
 @property (strong, nonatomic) NSString *dataEndpoint;
 @property (strong, nonatomic) NSString *imagesDirectory;
+@property (strong, nonatomic) CYContext *context;
 - (NSString *)localizedStringForKey:(NSString *)key;
 - (NSString *)pathForResource:(NSString *)resource ofType:(NSString *)ext;
 @end
@@ -41,6 +44,8 @@
 
         NSString *documentsPath = [(NSURL *)[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] path];
         self.imagesDirectory = [[documentsPath stringByAppendingPathComponent:@"PennApps"] stringByAppendingPathComponent:@"Images"];
+
+        self.context = [[CYContext alloc] init];
 
         self.overrideAppearance = YES;
         self.overrideStrings = YES;

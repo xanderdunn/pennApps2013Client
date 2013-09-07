@@ -16,6 +16,7 @@
 		D07B244417DAC54E0094A709 /* libPAAdminClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D07B242C17DAC54E0094A709 /* libPAAdminClient.a */; };
 		D07B244A17DAC54E0094A709 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D07B244817DAC54E0094A709 /* InfoPlist.strings */; };
 		D07B244C17DAC54E0094A709 /* PAAdminClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B244B17DAC54E0094A709 /* PAAdminClientTests.m */; };
+		D07B245F17DB6AF20094A709 /* libCYContext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D07B245C17DB6AD60094A709 /* libCYContext.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +26,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = D07B242B17DAC54E0094A709;
 			remoteInfo = PAAdminClient;
+		};
+		D07B245B17DB6AD60094A709 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D07B245517DB6AD60094A709 /* CYContext.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D075150817CB085A0055B2FA;
+			remoteInfo = CYContext;
+		};
+		D07B245D17DB6AEC0094A709 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D07B245517DB6AD60094A709 /* CYContext.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D075150717CB085A0055B2FA;
+			remoteInfo = CYContext;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -53,6 +68,7 @@
 		D07B244717DAC54E0094A709 /* PAAdminClientTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PAAdminClientTests-Info.plist"; sourceTree = "<group>"; };
 		D07B244917DAC54E0094A709 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D07B244B17DAC54E0094A709 /* PAAdminClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAAdminClientTests.m; sourceTree = "<group>"; };
+		D07B245517DB6AD60094A709 /* CYContext.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CYContext.xcodeproj; path = CYContext/CYContext.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07B245F17DB6AF20094A709 /* libCYContext.a in Frameworks */,
 				D07B243017DAC54E0094A709 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,6 +117,7 @@
 		D07B242E17DAC54E0094A709 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D07B245517DB6AD60094A709 /* CYContext.xcodeproj */,
 				D07B242F17DAC54E0094A709 /* Foundation.framework */,
 				D07B243D17DAC54E0094A709 /* XCTest.framework */,
 				D07B244017DAC54E0094A709 /* UIKit.framework */,
@@ -143,6 +161,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D07B245617DB6AD60094A709 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D07B245C17DB6AD60094A709 /* libCYContext.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -157,6 +183,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D07B245E17DB6AEC0094A709 /* PBXTargetDependency */,
 			);
 			name = PAAdminClient;
 			productName = PAAdminClient;
@@ -200,6 +227,12 @@
 			mainGroup = D07B242317DAC54E0094A709;
 			productRefGroup = D07B242D17DAC54E0094A709 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D07B245617DB6AD60094A709 /* Products */;
+					ProjectRef = D07B245517DB6AD60094A709 /* CYContext.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D07B242B17DAC54E0094A709 /* PAAdminClient */,
@@ -207,6 +240,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D07B245C17DB6AD60094A709 /* libCYContext.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCYContext.a;
+			remoteRef = D07B245B17DB6AD60094A709 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D07B243A17DAC54E0094A709 /* Resources */ = {
@@ -243,6 +286,11 @@
 			isa = PBXTargetDependency;
 			target = D07B242B17DAC54E0094A709 /* PAAdminClient */;
 			targetProxy = D07B244217DAC54E0094A709 /* PBXContainerItemProxy */;
+		};
+		D07B245E17DB6AEC0094A709 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CYContext;
+			targetProxy = D07B245D17DB6AEC0094A709 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -403,6 +451,7 @@
 				D07B245117DAC54E0094A709 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D07B245217DAC54E0094A709 /* Build configuration list for PBXNativeTarget "PAAdminClientTests" */ = {
 			isa = XCConfigurationList;
@@ -411,6 +460,7 @@
 				D07B245417DAC54E0094A709 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
