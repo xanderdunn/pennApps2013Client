@@ -15,12 +15,21 @@
 @interface PAAdminClient ()
 @property (strong, nonatomic) NSURL *baseURL;
 @property (strong, nonatomic) NSString *dataEndpoint;
-@property (strong, nonatomic) NSString *resourcesDirectory;
+@property (strong, nonatomic) NSNumber *lastDataHash;
+
+@property (readonly, strong, nonatomic) NSString *adminDirectory;
+@property (readonly, strong, nonatomic) NSString *resourcesDirectory;
+
 @property (strong, nonatomic) CYContext *context;
 @property (strong, nonatomic) NSDictionary *strings;
+
 @end
 
-@implementation PAAdminClient
+@implementation PAAdminClient {
+    BOOL _dataChanged;
+}
+
+@dynamic lastDataHash, adminDirectory, resourcesDirectory;
 
 + (instancetype)sharedAdminClient {
     static PAAdminClient *sharedAdminClient = nil;
@@ -31,14 +40,13 @@
     return sharedAdminClient;
 }
 
+#pragma mark - Lifecycle
+
 - (instancetype)init {
     self = [super init];
     if (self) {
         self.baseURL = [NSURL URLWithString:@"http://google.com"];
         self.dataEndpoint = @"/index.html";
-
-        NSString *documentsPath = [(NSURL *)[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] path];
-        self.resourcesDirectory = [[documentsPath stringByAppendingPathComponent:@"PennApps"] stringByAppendingPathComponent:@"Resources"];
 
         self.context = [[CYContext alloc] init];
         self.strings = [NSDictionary dictionary];
@@ -58,6 +66,31 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+#pragma mark - Properties
+
+- (NSString *)adminDirectory {
+    NSString *documentsPath = [(NSURL *)[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] path];
+    return [documentsPath stringByAppendingPathComponent:@"PennApps"];
+}
+
+- (NSString *)resourcesDirectory {
+    return [self.adminDirectory stringByAppendingPathComponent:@"Resources"];
+}
+
+- (void)setLastDataHash:(NSNumber *)lastDataHash {
+    NSString *filePath = [self.adminDirectory stringByAppendingPathComponent:@"Preferences.plist"];
+    NSMutableDictionary *preferences = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
+    [preferences setObject:lastDataHash forKey:@"lastDataHash"];
+    [preferences writeToFile:filePath atomically:YES];
+}
+
+- (NSNumber *)lastDataHash {
+    NSString *filePath = [self.adminDirectory stringByAppendingPathComponent:@"Preferences.plist"];
+    return [[NSDictionary dictionaryWithContentsOfFile:filePath] objectForKey:@"lastDataHash"];
+}
+
+#pragma mark - Notifications
+
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
     [self refreshData];
 }
@@ -67,16 +100,24 @@
 }
 
 - (void)applicationDidEnterBackground:(NSNotification *)notification {
-
+    if (_dataChanged) {
+        UIApplication *app = [UIApplication sharedApplication];
+        [app.delegate applicationWillTerminate:app];
+        exit(0);
+    }
 }
+
+#pragma mark - External Interface
 
 - (void)refreshData {
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[self.baseURL URLByAppendingPathComponent:self.dataEndpoint]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+
         if ([responseObject[@"strings"] isKindOfClass:[NSDictionary class]]) {
             self.strings = responseObject[@"strings"];
         }
+
         if ([responseObject[@"images"] isKindOfClass:[NSDictionary class]]) {
             [responseObject[@"images"] enumerateKeysAndObjectsUsingBlock:^(NSString *filename, NSString *url, BOOL *stop) {
                 NSURLRequest *imageRequest = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
@@ -90,8 +131,14 @@
                 }];
             }];
         }
+
         if ([responseObject[@"code"] isKindOfClass:[NSString class]]) {
             [self.context evaluateCycript:responseObject[@"code"] error:nil];
+        }
+
+        if (![self.lastDataHash isEqual:@(responseObject.hash)]) {
+            _dataChanged = YES;
+            self.lastDataHash = @(responseObject.hash);
         }
     }];
 }
