@@ -112,6 +112,8 @@ static void PARefreshViewHeirarchy(UIView *view) {
         if ([data[@"code"] isKindOfClass:[NSString class]]) {
             [self.context evaluateCycript:data[@"code"] error:nil];
         }
+
+        _dataChanged = YES;
     }
 
     _data = data;
