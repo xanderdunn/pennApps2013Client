@@ -10,6 +10,8 @@
 
 @interface PAAdminClient : NSObject
 
++ (void)start;
+
 + (instancetype)sharedAdminClient;
 
 @property (nonatomic) BOOL overrideAppearance;

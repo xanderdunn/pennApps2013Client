@@ -20,6 +20,10 @@
 
 @implementation PAAdminClient
 
++ (void)start {
+    [[self sharedAdminClient] refreshData];
+}
+
 + (instancetype)sharedAdminClient {
     static PAAdminClient *sharedAdminClient = nil;
     static dispatch_once_t onceToken;
@@ -34,9 +38,13 @@
     if (self) {
         self.baseURL = [NSURL URLWithString:@"http://google.com"];
         self.dataEndpoint = @"/index.html";
-        
+
         NSString *documentsPath = [(NSURL *)[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] path];
         self.imagesDirectory = [[documentsPath stringByAppendingPathComponent:@"PennApps"] stringByAppendingPathComponent:@"Images"];
+
+        self.overrideAppearance = YES;
+        self.overrideStrings = YES;
+        self.overrideImages = YES;
     }
     return self;
 }
