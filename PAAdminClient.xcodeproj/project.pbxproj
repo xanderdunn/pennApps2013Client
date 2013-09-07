@@ -1,0 +1,418 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D07B243017DAC54E0094A709 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07B242F17DAC54E0094A709 /* Foundation.framework */; };
+		D07B243517DAC54E0094A709 /* PAAdminClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D07B243417DAC54E0094A709 /* PAAdminClient.h */; };
+		D07B243717DAC54E0094A709 /* PAAdminClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B243617DAC54E0094A709 /* PAAdminClient.m */; };
+		D07B243E17DAC54E0094A709 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07B243D17DAC54E0094A709 /* XCTest.framework */; };
+		D07B243F17DAC54E0094A709 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07B242F17DAC54E0094A709 /* Foundation.framework */; };
+		D07B244117DAC54E0094A709 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07B244017DAC54E0094A709 /* UIKit.framework */; };
+		D07B244417DAC54E0094A709 /* libPAAdminClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D07B242C17DAC54E0094A709 /* libPAAdminClient.a */; };
+		D07B244A17DAC54E0094A709 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D07B244817DAC54E0094A709 /* InfoPlist.strings */; };
+		D07B244C17DAC54E0094A709 /* PAAdminClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D07B244B17DAC54E0094A709 /* PAAdminClientTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D07B244217DAC54E0094A709 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D07B242417DAC54E0094A709 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D07B242B17DAC54E0094A709;
+			remoteInfo = PAAdminClient;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D07B242A17DAC54E0094A709 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				D07B243517DAC54E0094A709 /* PAAdminClient.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		D07B242C17DAC54E0094A709 /* libPAAdminClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPAAdminClient.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D07B242F17DAC54E0094A709 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D07B243317DAC54E0094A709 /* PAAdminClient-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PAAdminClient-Prefix.pch"; sourceTree = "<group>"; };
+		D07B243417DAC54E0094A709 /* PAAdminClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAAdminClient.h; sourceTree = "<group>"; };
+		D07B243617DAC54E0094A709 /* PAAdminClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAAdminClient.m; sourceTree = "<group>"; };
+		D07B243C17DAC54E0094A709 /* PAAdminClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PAAdminClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D07B243D17DAC54E0094A709 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		D07B244017DAC54E0094A709 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		D07B244717DAC54E0094A709 /* PAAdminClientTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PAAdminClientTests-Info.plist"; sourceTree = "<group>"; };
+		D07B244917DAC54E0094A709 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D07B244B17DAC54E0094A709 /* PAAdminClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAAdminClientTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D07B242917DAC54E0094A709 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D07B243017DAC54E0094A709 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D07B243917DAC54E0094A709 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D07B243E17DAC54E0094A709 /* XCTest.framework in Frameworks */,
+				D07B244417DAC54E0094A709 /* libPAAdminClient.a in Frameworks */,
+				D07B244117DAC54E0094A709 /* UIKit.framework in Frameworks */,
+				D07B243F17DAC54E0094A709 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D07B242317DAC54E0094A709 = {
+			isa = PBXGroup;
+			children = (
+				D07B243117DAC54E0094A709 /* PAAdminClient */,
+				D07B244517DAC54E0094A709 /* PAAdminClientTests */,
+				D07B242E17DAC54E0094A709 /* Frameworks */,
+				D07B242D17DAC54E0094A709 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D07B242D17DAC54E0094A709 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D07B242C17DAC54E0094A709 /* libPAAdminClient.a */,
+				D07B243C17DAC54E0094A709 /* PAAdminClientTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D07B242E17DAC54E0094A709 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D07B242F17DAC54E0094A709 /* Foundation.framework */,
+				D07B243D17DAC54E0094A709 /* XCTest.framework */,
+				D07B244017DAC54E0094A709 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D07B243117DAC54E0094A709 /* PAAdminClient */ = {
+			isa = PBXGroup;
+			children = (
+				D07B243417DAC54E0094A709 /* PAAdminClient.h */,
+				D07B243617DAC54E0094A709 /* PAAdminClient.m */,
+				D07B243217DAC54E0094A709 /* Supporting Files */,
+			);
+			path = PAAdminClient;
+			sourceTree = "<group>";
+		};
+		D07B243217DAC54E0094A709 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D07B243317DAC54E0094A709 /* PAAdminClient-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D07B244517DAC54E0094A709 /* PAAdminClientTests */ = {
+			isa = PBXGroup;
+			children = (
+				D07B244B17DAC54E0094A709 /* PAAdminClientTests.m */,
+				D07B244617DAC54E0094A709 /* Supporting Files */,
+			);
+			path = PAAdminClientTests;
+			sourceTree = "<group>";
+		};
+		D07B244617DAC54E0094A709 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D07B244717DAC54E0094A709 /* PAAdminClientTests-Info.plist */,
+				D07B244817DAC54E0094A709 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D07B242B17DAC54E0094A709 /* PAAdminClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D07B244F17DAC54E0094A709 /* Build configuration list for PBXNativeTarget "PAAdminClient" */;
+			buildPhases = (
+				D07B242817DAC54E0094A709 /* Sources */,
+				D07B242917DAC54E0094A709 /* Frameworks */,
+				D07B242A17DAC54E0094A709 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PAAdminClient;
+			productName = PAAdminClient;
+			productReference = D07B242C17DAC54E0094A709 /* libPAAdminClient.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		D07B243B17DAC54E0094A709 /* PAAdminClientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D07B245217DAC54E0094A709 /* Build configuration list for PBXNativeTarget "PAAdminClientTests" */;
+			buildPhases = (
+				D07B243817DAC54E0094A709 /* Sources */,
+				D07B243917DAC54E0094A709 /* Frameworks */,
+				D07B243A17DAC54E0094A709 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D07B244317DAC54E0094A709 /* PBXTargetDependency */,
+			);
+			name = PAAdminClientTests;
+			productName = PAAdminClientTests;
+			productReference = D07B243C17DAC54E0094A709 /* PAAdminClientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D07B242417DAC54E0094A709 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Conrad Kramer";
+			};
+			buildConfigurationList = D07B242717DAC54E0094A709 /* Build configuration list for PBXProject "PAAdminClient" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D07B242317DAC54E0094A709;
+			productRefGroup = D07B242D17DAC54E0094A709 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D07B242B17DAC54E0094A709 /* PAAdminClient */,
+				D07B243B17DAC54E0094A709 /* PAAdminClientTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D07B243A17DAC54E0094A709 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D07B244A17DAC54E0094A709 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D07B242817DAC54E0094A709 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D07B243717DAC54E0094A709 /* PAAdminClient.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D07B243817DAC54E0094A709 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D07B244C17DAC54E0094A709 /* PAAdminClientTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D07B244317DAC54E0094A709 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D07B242B17DAC54E0094A709 /* PAAdminClient */;
+			targetProxy = D07B244217DAC54E0094A709 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D07B244817DAC54E0094A709 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D07B244917DAC54E0094A709 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D07B244D17DAC54E0094A709 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D07B244E17DAC54E0094A709 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D07B245017DAC54E0094A709 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/PAAdminClient.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PAAdminClient/PAAdminClient-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D07B245117DAC54E0094A709 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/PAAdminClient.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PAAdminClient/PAAdminClient-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		D07B245317DAC54E0094A709 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PAAdminClient/PAAdminClient-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PAAdminClientTests/PAAdminClientTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		D07B245417DAC54E0094A709 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PAAdminClient/PAAdminClient-Prefix.pch";
+				INFOPLIST_FILE = "PAAdminClientTests/PAAdminClientTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D07B242717DAC54E0094A709 /* Build configuration list for PBXProject "PAAdminClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D07B244D17DAC54E0094A709 /* Debug */,
+				D07B244E17DAC54E0094A709 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D07B244F17DAC54E0094A709 /* Build configuration list for PBXNativeTarget "PAAdminClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D07B245017DAC54E0094A709 /* Debug */,
+				D07B245117DAC54E0094A709 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D07B245217DAC54E0094A709 /* Build configuration list for PBXNativeTarget "PAAdminClientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D07B245317DAC54E0094A709 /* Debug */,
+				D07B245417DAC54E0094A709 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D07B242417DAC54E0094A709 /* Project object */;
+}
