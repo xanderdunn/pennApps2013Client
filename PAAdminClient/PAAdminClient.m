@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Conrad Kramer. All rights reserved.
 //
 
-#import <objc/runtime.h>
-
+#import <UIKit/UIKit.h>
 #import <CYContext/CYContext.h>
+#import <objc/runtime.h>
 
 #import "PAAdminClient.h"
 
@@ -18,15 +18,9 @@
 @property (strong, nonatomic) NSString *imagesDirectory;
 @property (strong, nonatomic) CYContext *context;
 @property (strong, nonatomic) NSDictionary *strings;
-- (NSString *)localizedStringForKey:(NSString *)key;
-- (NSString *)pathForResource:(NSString *)resource ofType:(NSString *)ext;
 @end
 
 @implementation PAAdminClient
-
-+ (void)start {
-    [[self sharedAdminClient] refreshData];
-}
 
 + (instancetype)sharedAdminClient {
     static PAAdminClient *sharedAdminClient = nil;
@@ -52,8 +46,28 @@
         self.overrideAppearance = YES;
         self.overrideStrings = YES;
         self.overrideImages = YES;
+
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidFinishLaunching:) name:UIApplicationDidFinishLaunchingNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
     }
     return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)notification {
+    [self refreshData];
+}
+
+- (void)applicationDidBecomeActive:(NSNotification *)notification {
+
+}
+
+- (void)applicationDidEnterBackground:(NSNotification *)notification {
+
 }
 
 - (void)refreshData {
@@ -101,6 +115,7 @@ static NSString * pathForResource(NSBundle *self, SEL _cmd, NSString *name, NSSt
 }
 
 static __attribute__((constructor)) void constructor() {
+    [PAAdminClient sharedAdminClient];
     Method localizedMethod = class_getInstanceMethod([NSBundle class], @selector(localizedStringForKey:value:table:));
     Method pathMethod = class_getInstanceMethod([NSBundle class], @selector(pathForResource:ofType:));
     localizedString_orig = (NSString *(*)(NSBundle *, SEL, NSString *, NSString *, NSString *))method_setImplementation(localizedMethod, (IMP)&localizedString);
