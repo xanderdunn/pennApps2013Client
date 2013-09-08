@@ -24,4 +24,6 @@
 @property (nonatomic) BOOL overrideStrings;
 @property (nonatomic) BOOL overrideImages;
 
+- (void)refreshData;
+
 @end

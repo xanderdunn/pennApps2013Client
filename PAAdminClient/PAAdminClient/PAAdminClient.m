@@ -97,6 +97,7 @@
 
 - (void)initializeData {
   if (self.data == nil) {
+    self.data = [NSDictionary dictionary];
     NSString *filePath = [self.adminDirectory stringByAppendingPathComponent:@"Preferences.plist"];
     self.data = [[NSDictionary dictionaryWithContentsOfFile:filePath] objectForKey:@"data"];
   }
