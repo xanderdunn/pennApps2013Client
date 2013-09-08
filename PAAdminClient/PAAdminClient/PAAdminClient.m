@@ -15,8 +15,10 @@
 #import "PAAppearanceParser.h"
 
 @interface PAAdminClient ()
-@property (strong, nonatomic) NSURL *baseURL;
-@property (strong, nonatomic) NSString *dataEndpoint;
+// The baseURL and dataEndpoint should be set in the library becasue they should never change
+@property (strong, nonatomic) NSURL *baseURL;         // Base URL of the server
+@property (strong, nonatomic) NSString *dataEndpoint; // Specification location on the server
+
 @property (strong, nonatomic) NSDictionary *data;
 
 @property (readonly, strong, nonatomic) NSString *adminDirectory;
@@ -47,8 +49,8 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.baseURL = [NSURL URLWithString:@"http://google.com"];
-        self.dataEndpoint = @"/index.html";
+        self.baseURL = [NSURL URLWithString:@"http://pennappsbackend.herokuapp.com"];
+        self.dataEndpoint = @"/clients/getBatchedJSONData";
 
         self.context = [[CYContext alloc] init];
         self.strings = [NSDictionary dictionary];
@@ -80,6 +82,13 @@
         [[NSFileManager defaultManager] createDirectoryAtPath:adminDirectory withIntermediateDirectories:YES attributes:nil error:nil];
     }
     return adminDirectory;
+}
+
+- (void)setToken:(NSString *)token {
+  if (_token != token) {
+    _token = token;
+    [self refreshData];
+  }
 }
 
 - (NSString *)resourcesDirectory {
@@ -152,7 +161,8 @@
 #pragma mark - External Interface
 
 - (void)refreshData {
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[self.baseURL URLByAppendingPathComponent:self.dataEndpoint]];
+  NSAssert(self.token, @"You must specify a project token!");
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[[self.baseURL URLByAppendingPathComponent:self.dataEndpoint] URLByAppendingPathComponent:self.token]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         if (responseObject) self.data = responseObject;
