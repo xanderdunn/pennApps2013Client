@@ -7,7 +7,6 @@
 //
 
 #import "PAMasterViewController.h"
-#import <PAAdminClient/PAAdminClient.h>
 #import "PADetailViewController.h"
 
 @interface PAMasterViewController () {
@@ -20,7 +19,6 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    [PAAdminClient sharedAdminClient];
 }
 
 - (void)pressedBarButton:(id)sender {
