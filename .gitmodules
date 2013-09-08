@@ -1,3 +1,6 @@
 [submodule "PAAdminClient/CYContext"]
 	path = PAAdminClient/CYContext
 	url = git@github.com:conradev/CYContext.git
+[submodule "newsyc"]
+	path = newsyc
+	url = git@github.com:thoughtadvances/newsyc.git
