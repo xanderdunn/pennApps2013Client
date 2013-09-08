@@ -95,8 +95,19 @@
     return resourcesDirectory;
 }
 
+- (void)initializeData {
+  if (self.data == nil) {
+    NSString *filePath = [self.adminDirectory stringByAppendingPathComponent:@"Preferences.plist"];
+    self.data = [[NSDictionary dictionaryWithContentsOfFile:filePath] objectForKey:@"data"];
+  }
+}
+
 - (void)setData:(NSDictionary *)data {
-    if (![_data isEqual:data]) {
+    BOOL equal = [_data isEqual:data];
+    _data = data;
+
+    if (!equal) {
+
         if ([data[@"strings"] isKindOfClass:[NSDictionary class]]) {
             self.strings = data[@"strings"];
         }
@@ -128,8 +139,6 @@
         _dataChanged = YES;
     }
 
-    _data = data;
-
     NSString *filePath = [self.adminDirectory stringByAppendingPathComponent:@"Preferences.plist"];
     NSMutableDictionary *preferences = [NSMutableDictionary dictionaryWithContentsOfFile:filePath] ?: [NSMutableDictionary dictionary];
     [preferences setValue:_data forKey:@"data"];
@@ -139,14 +148,12 @@
 #pragma mark - Notifications
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
-    NSString *filePath = [self.adminDirectory stringByAppendingPathComponent:@"Preferences.plist"];
-    self.data = [[NSDictionary dictionaryWithContentsOfFile:filePath] objectForKey:@"data"];
-
+    [self initializeData];
     [self refreshData];
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification {
-
+    [self refreshData];
 }
 
 - (void)applicationDidEnterBackground:(NSNotification *)notification {
@@ -163,16 +170,20 @@
   NSAssert(self.token, @"You must specify a project token!");
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[[self.baseURL URLByAppendingPathComponent:self.dataEndpoint] URLByAppendingPathComponent:self.token]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        if (responseObject) self.data = responseObject;
+        if (data) {
+            NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            if (responseObject) self.data = responseObject;
+        }
     }];
 }
 
 - (NSString *)localizedStringForKey:(NSString *)key {
+    [self initializeData];
     return self.overrideStrings ? self.strings[key] : nil;
 }
 
 - (NSString *)pathForResource:(NSString *)name ofType:(NSString *)extension {
+    [self initializeData];
     return self.overrideImages ? [[self.resourcesDirectory stringByAppendingPathComponent:name] stringByAppendingPathExtension:extension] : nil;
 }
 

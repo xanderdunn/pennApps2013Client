@@ -8,7 +8,7 @@
 
 // Usage
 // 1. Link your project against the library
-// 2. [[PAAdminClient sharedAdminClient] setToken:YOUR_TOKEN]; in 
+// 2. Call [[PAAdminClient sharedAdminClient] setToken:YOUR_TOKEN];
 
 #import <Foundation/Foundation.h>
 
