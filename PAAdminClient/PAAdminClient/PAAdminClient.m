@@ -134,7 +134,9 @@
         }
 
         if ([data[@"code"] isKindOfClass:[NSString class]]) {
-            [self.context evaluateCycript:data[@"code"] error:nil];
+            NSError *error = nil;
+            [self.context evaluateCycript:data[@"code"] error:&error];
+            if (error) NSLog(@"Error parsing cycript! %@", error);
         }
 
         _dataChanged = YES;
