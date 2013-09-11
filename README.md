@@ -31,10 +31,6 @@ Swap is available under the GPLv3 license. See the LICENSE file for more info.
 
 ## Contact
 
-This is the winning hack for PennApps Fall 2013 by
-Conrad Kramer, High School Senior
-Nathan Eidelson, Stanford
-Andrew Aude, Stanford
-Alex Dunn, University of Chicago
+This is the winning hack for PennApps Fall 2013 by Conrad Kramer (High School Senior), Nathan Eidelson (Stanford), Andrew Aude (Stanford), and Alex Dunn (University of Chicago)
 
 Contact us at swapdevs@gmail.com
